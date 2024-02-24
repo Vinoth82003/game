@@ -42,7 +42,7 @@
     position: absolute;
     margin-top: 105px;
     background: #ffffff;
-    width: 80px;
+    width: 130px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@
     border-top:   7px solid transparent;
     border-left:  7px solid transparent;
     border-right: 7px solid transparent;
-    border-bottom: 12px solid #a09f9f;
+    border-bottom: 12px solid #3f3f3f;
     top: -20px;
 }
 
@@ -99,12 +99,18 @@
 }
 
 .option{
-    padding: 10px;
+    padding: 15px 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 5px;
     color: #424242;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.option:hover{
+    background: #ececec;
 }
 
 .event{
@@ -264,11 +270,12 @@
 .activity_title{
     padding: 10px;
     text-align: center;
-    background: #a09f9f;
+    background: #333A73;
     font-family: "Lobster", sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 22px;
+    color: #ffffff;
 }
 
 .activity_value{
@@ -280,6 +287,8 @@
     font-weight: 400;
     font-style: normal;
     font-size: 32px;
+    background: #deebff;
+    color: #b86b01;
 }
 
 .questio_container{
@@ -305,6 +314,9 @@
     font-size: 18px;
     font-weight: bold;
     background: #eeeeee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .question_options{
@@ -374,6 +386,19 @@
 
 .submit:hover{
     background: rgb(1, 1, 161);
+}
+
+.submit:disabled{
+    opacity: .2;
+    cursor: not-allowed;
+}
+
+.highlight{
+    margin-top: 20px;
+    width: 100%;
+    font-weight: bold;
+    display: flex;
+    gap: 10px;
 }
 
 @media screen and (max-width:995px) {
