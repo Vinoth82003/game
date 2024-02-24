@@ -226,6 +226,7 @@
     background: #ffffff;
     border-radius: 5px;
     cursor: pointer;
+    border: none;
 }
 
 .mask:hover{
@@ -402,10 +403,11 @@
     .main , .main.active{
         flex-direction: column;
         align-items: center;
+        justify-content: flex-start;
     }
 
     .questio_container{
-        gap: 0;
+        height: 475px;
     }
 
 }
