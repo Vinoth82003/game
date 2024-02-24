@@ -1,5 +1,11 @@
 console.log("dashboard.js");
 
+let imageUrl =[
+    {
+     url:""
+    }
+]
+
 let answeredQuestions = [
     false,
     false,
@@ -25,6 +31,7 @@ localStorage.setItem("imagesfound",0)
 localStorage.setItem("attempts",0)
 localStorage.setItem("score",0)
 document.querySelector(".attempts").innerHTML = localStorage.getItem("attempts");
+
 let questions = [
     {
         qn:"question 1 (answer is 1)",
@@ -138,6 +145,8 @@ function checkAllAnswered(){
         alert("congratulations");
         let imagefound = parseInt(localStorage.getItem("imagesfound")) + 1;
         localStorage.setItem("imagesfound",imagefound)
+        let audio = new Audio("asset/audio/victory1.mp3");
+        audio.play();
     }
 
     document.querySelector(".score").innerHTML = (parseInt(countOfTrue)*10);
@@ -177,32 +186,36 @@ function removeButtons(){
 
 removeButtons();
 
-function submitAnswer(index,answer){
+function submitAnswer(index, answer) {
     let correctAnswer = questions[index].answer;
     if (correctAnswer == answer) {
         answeredQuestions[index] = true;
-        // alert("correct answer");
-        let score =  localStorage.getItem("score");
-        (score)++;
-        localStorage.setItem("score",score);
+        let score = parseInt(localStorage.getItem("score")); // Parse the score as integer
+        score++;
+        localStorage.setItem("score", score);
         document.querySelector(".score").innerHTML = score;
         let newIndex = answeredQuestions.indexOf(false);
         if (newIndex != -1) {
             displayQuestion(newIndex);
         }
-        
-    }else{
+        // Play correct answer audio
+        let audio = new Audio("asset/audio/points.mp3");
+        audio.play();
+    } else {
         answeredQuestions[index] = false;
         alert("wrong answer");
-        let attempts =  localStorage.getItem("attempts");
-        (attempts)++;
-        localStorage.setItem("attempts",attempts);
+        let attempts = parseInt(localStorage.getItem("attempts")); // Parse attempts as integer
+        attempts++;
+        localStorage.setItem("attempts", attempts);
         document.querySelector(".attempts").innerHTML = attempts;
+        // Play wrong answer audio
+        let audio = new Audio("asset/audio/loss.mp3");
+        audio.play();
     }
-    localStorage.setItem("answeredQuestions",JSON.stringify(answeredQuestions))
-    // console.log(JSON.parse(localStorage.getItem("answeredQuestions")));
+    localStorage.setItem("answeredQuestions", JSON.stringify(answeredQuestions))
     removeButtons();
 }
+
 
 
 all_mask.forEach(mask => {
